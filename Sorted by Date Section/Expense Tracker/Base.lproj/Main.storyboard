@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kM5-oA-BNO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PCF-Vy-zzF">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -75,7 +75,6 @@
                                     <segment title="By Date"/>
                                     <segment title="By Amount"/>
                                 </segments>
-                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="segmentedControlPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="ZFz-jK-ZMt"/>
                                 </connections>
@@ -267,52 +266,11 @@
             </objects>
             <point key="canvasLocation" x="2906.4000000000001" y="102.99850074962519"/>
         </scene>
-        <!--Open View Controller-->
-        <scene sceneID="xbz-Bc-XnK">
-            <objects>
-                <viewController id="kM5-oA-BNO" customClass="OpenViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Mih-Gk-YgH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bank" translatesAutoresizingMaskIntoConstraints="NO" id="tbV-vH-NhK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ovV-dO-dbf" appends="YES" id="rgb-Aw-dOJ"/>
-                                </connections>
-                            </imageView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="1Ed-wx-Xw0"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="tbV-vH-NhK" firstAttribute="leading" secondItem="1Ed-wx-Xw0" secondAttribute="leading" id="Mis-za-JKm"/>
-                            <constraint firstItem="1Ed-wx-Xw0" firstAttribute="trailing" secondItem="tbV-vH-NhK" secondAttribute="trailing" id="Rus-K9-4xn"/>
-                            <constraint firstItem="tbV-vH-NhK" firstAttribute="top" secondItem="1Ed-wx-Xw0" secondAttribute="top" id="muD-jZ-eEZ"/>
-                            <constraint firstItem="1Ed-wx-Xw0" firstAttribute="bottom" secondItem="tbV-vH-NhK" secondAttribute="bottom" id="xMX-Oq-9QS"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="imageView" destination="tbV-vH-NhK" id="KCw-jf-cc4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WXG-cG-jcB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ovV-dO-dbf">
-                    <connections>
-                        <action selector="imageTapped:" destination="kM5-oA-BNO" id="wsr-fd-kFJ"/>
-                        <segue destination="PCF-Vy-zzF" kind="show" identifier="ShowTableView" id="V9I-OC-Zhf"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="-714" y="85"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="CRY-hB-d7i">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bu8-Hd-6Yk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="PCF-Vy-zzF" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PCF-Vy-zzF" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="rSl-ld-Qeb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="v4h-bz-MaH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -322,6 +280,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Gto-ip-4AQ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bu8-Hd-6Yk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138.40000000000001" y="86.806596701649184"/>
         </scene>
@@ -349,7 +308,6 @@
         <segue reference="ILd-4D-x1l"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="bank" width="223" height="226"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

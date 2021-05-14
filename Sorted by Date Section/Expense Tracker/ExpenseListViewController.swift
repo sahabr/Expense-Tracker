@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ExpenseListViewController: UIViewController {
 
     @IBOutlet weak var expenseTotal: UILabel!
@@ -16,6 +17,11 @@ class ExpenseListViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var expenses = Expenses()
+    
+    struct MonthSection {
+        var month: Date
+        var expense: [Expense] = []
+    }
 
     
     override func viewDidLoad() {
@@ -100,25 +106,29 @@ class ExpenseListViewController: UIViewController {
         expenses.saveData()
     }
     
-    func categorySum() -> Dictionary<String, Double>{
-        var dict:[String:Double] = [:]
-        expenses.expenseArray.forEach{
-            if let current = dict[$0.category]{
-                dict[$0.category] = current + $0.amount!
-            }else{
-                dict[$0.category] = $0.amount!
-            }
-        }
-        return dict
+    func firstDayOfMonth(date: Date) -> Date{
+        let calender = Calendar.current
+        let components = calender.dateComponents([.year, .month], from: date)
+        return calender.date(from: components)!
     }
     
+    
+    var sections = [MonthSection]()
+    
+    func byMonth(){
+        let groups = Dictionary(grouping: expenses.expenseArray) { (expense) -> Date in
+            return firstDayOfMonth(date: expense.date)
+        }
+        self.sections = groups.map(MonthSection.init(month:expense:))
+        tableView.reloadData()
+    }
     
     func sortTable(){
         
         switch segmentedControl.selectedSegmentIndex{
         case 0:
             expenses.expenseArray.sort(by: {$0.date > $1.date})
-            
+            byMonth()
         case 1:
 
             expenses.expenseArray.sort(by: {$0.amount ?? 0.0  > $1.amount ?? 0.0 })
@@ -138,27 +148,43 @@ class ExpenseListViewController: UIViewController {
 
 extension ExpenseListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return expenses.expenseArray.count
+        let section = self.sections[section]
+        return section.expense.count
+        //return expenses.expenseArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        var result = categorySum()
         
-        cell.textLabel?.text = expenses.expenseArray[indexPath.row].category
-        if expenses.expenseArray[indexPath.row].category == "💰 Salary"{
-            cell.detailTextLabel?.text = String(format: "+$%.2f", expenses.expenseArray[indexPath.row].amount!)
+        let section = self.sections[indexPath.section]
+        let expense = section.expense[indexPath.row]
+        
+        cell.textLabel?.text = section.expense[indexPath.row].category
+        if expense.category == "💰 Salary"{
+            cell.detailTextLabel?.text = String(format: "+$%.2f", expense.amount!)
             cell.detailTextLabel?.textColor = UIColor.green
         }else{
-            cell.detailTextLabel?.text = String(format: "-$%.2f", expenses.expenseArray[indexPath.row].amount!)
+            cell.detailTextLabel?.text = String(format: "-$%.2f", expense.amount!)
             cell.detailTextLabel?.textColor = UIColor.red
         }
         
         return cell
 
     }
-    
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let section = self.sections[section]
+        let date = section.month
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
+    
     
 }
 

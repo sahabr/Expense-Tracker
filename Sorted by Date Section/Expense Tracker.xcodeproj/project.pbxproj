@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E10B46C264E054A00FD45E6 /* OpenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E10B46B264E054A00FD45E6 /* OpenViewController.swift */; };
 		2EEBAC50264C8CA9002C6720 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBAC4F264C8CA9002C6720 /* AppDelegate.swift */; };
 		2EEBAC52264C8CA9002C6720 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBAC51264C8CA9002C6720 /* SceneDelegate.swift */; };
 		2EEBAC54264C8CA9002C6720 /* ExpenseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBAC53264C8CA9002C6720 /* ExpenseListViewController.swift */; };
@@ -20,7 +19,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2E10B46B264E054A00FD45E6 /* OpenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenViewController.swift; sourceTree = "<group>"; };
 		2EEBAC4C264C8CA9002C6720 /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EEBAC4F264C8CA9002C6720 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EEBAC51264C8CA9002C6720 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +66,6 @@
 				2EEBAC51264C8CA9002C6720 /* SceneDelegate.swift */,
 				2EEBAC65264C902C002C6720 /* Expenses.swift */,
 				2EEBAC68264C9095002C6720 /* Expense.swift */,
-				2E10B46B264E054A00FD45E6 /* OpenViewController.swift */,
 				2EEBAC53264C8CA9002C6720 /* ExpenseListViewController.swift */,
 				2EEBAC71264CBEF5002C6720 /* ExpenseDetailTableViewController.swift */,
 				2EEBAC55264C8CA9002C6720 /* Main.storyboard */,
@@ -155,7 +152,6 @@
 				2EEBAC52264C8CA9002C6720 /* SceneDelegate.swift in Sources */,
 				2EEBAC69264C9095002C6720 /* Expense.swift in Sources */,
 				2EEBAC72264CBEF5002C6720 /* ExpenseDetailTableViewController.swift in Sources */,
-				2E10B46C264E054A00FD45E6 /* OpenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
